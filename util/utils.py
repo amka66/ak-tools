@@ -1,0 +1,106 @@
+# -*- coding: utf-8 -*-
+
+
+#
+# IMPORTS
+#
+
+import logging
+import random
+import string
+import sys
+from enum import Enum
+from typing import Any
+
+#
+# TYPES
+#
+
+
+int0 = int  # integer >= 0
+
+
+#
+# CONSTANTS
+#
+
+
+LOGGING_FORMATTER_STR = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+
+#
+# TYPES
+#
+
+
+class Color(str, Enum):
+    GRAY = "\033[90m"
+    RED = "\033[91m"
+    GREEN = "\033[92m"
+    YELLOW = "\033[93m"
+    BRIGHT = "\033[1m"
+    UNDERLINE = "\033[4m"
+    RESET = "\033[0m"
+
+
+#
+# FUNCTIONS
+#
+
+
+def colorize(text: str, color: Color) -> str:
+    return color + text + Color.RESET
+
+
+def gray(text: str) -> str:
+    return colorize(text, Color.GRAY)
+
+
+def red(text: str) -> str:
+    return colorize(text, Color.RED)
+
+
+def green(text: str) -> str:
+    return colorize(text, Color.GREEN)
+
+
+def yellow(text: str) -> str:
+    return colorize(text, Color.YELLOW)
+
+
+def bright(text: str) -> str:
+    return colorize(text, Color.BRIGHT)
+
+
+def underline(text: str) -> str:
+    return colorize(text, Color.UNDERLINE)
+
+
+def print_(s: str, **kwargs: Any) -> None:
+    print(s, flush=True, **kwargs)
+
+
+def create_logger(
+    name: str, *, file_path: str, formatter: logging.Formatter, level
+) -> logging.Logger:
+    logger = logging.getLogger(name)
+    file_log_handler = logging.FileHandler(
+        file_path,
+        mode="a",
+        encoding="utf-8",
+        delay=False,
+    )
+    file_log_handler.setFormatter(formatter)
+    logger.addHandler(file_log_handler)
+    stdout_log_handler = logging.StreamHandler(stream=sys.stdout)
+    stdout_log_handler.setFormatter(formatter)
+    logger.addHandler(stdout_log_handler)
+    logger.setLevel(level)
+    return logger
+
+
+def get_random_string(length: int0) -> str:
+    # choose from all lowercase letters, uppercase letters, and digits
+    letters = string.ascii_letters + string.digits
+    result_str = "".join(random.choice(letters) for _ in range(length))
+    return result_str
