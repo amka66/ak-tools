@@ -10,7 +10,7 @@ import json
 
 from openai.types.chat import ChatCompletionMessage
 
-# from .aoai import client as aoai_client
+from .aoai import client as aoai_client
 from .oai import client as oai_client
 
 #
@@ -27,8 +27,8 @@ Message = dict
 #
 
 
-CLIENT = oai_client
-# CLIENT = aoai_client
+# CLIENT = oai_client
+CLIENT = aoai_client
 
 
 #
