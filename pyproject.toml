@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "util"
+version = "0.1.0"
+description = "Utility files (python modules, bash scripts, etc.)"
+authors = ["Amir Kantor <amir.kantor@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+openai = "^1.3.8"
+tiktoken = "^0.5.2"
+python-dotenv = "^1.0.0"
+ipykernel = "^6.27.1"
+nest-asyncio = "^1.5.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
