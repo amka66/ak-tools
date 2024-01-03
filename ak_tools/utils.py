@@ -5,13 +5,19 @@
 # IMPORTS
 #
 
+
 import logging
 import random
 import string
 import sys
+import time
 from enum import Enum
+from pathlib import Path
 from typing import Any
 
+from .settings import LoggingLevel
+
+#
 #
 # TYPES
 #
@@ -25,7 +31,7 @@ int0 = int  # integer >= 0
 #
 
 
-LOGGING_FORMATTER_STR = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+LOGGING_FORMATTER_STR = "%(asctime)sZ - %(name)s - %(levelname)s - %(message)s"
 
 
 #
@@ -81,11 +87,13 @@ def print_(s: str, **kwargs: Any) -> None:
 
 
 def create_logger(
-    name: str, *, file_path: str, formatter: logging.Formatter, level
+    name: str, *, log_file: str | Path, formatter_str: str, level: LoggingLevel
 ) -> logging.Logger:
+    formatter = logging.Formatter(formatter_str)
+    formatter.converter = time.gmtime
     logger = logging.getLogger(name)
     file_log_handler = logging.FileHandler(
-        file_path,
+        log_file,
         mode="a",
         encoding="utf-8",
         delay=False,

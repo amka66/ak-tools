@@ -7,11 +7,11 @@
 
 
 import json
+from typing import Literal
 
-from openai.types.chat import ChatCompletionMessage
+from openai.types.chat import ChatCompletion, ChatCompletionMessage
 
-from .aoai import client as aoai_client
-from .oai import client as oai_client
+from .settings import MyBaseSettings
 
 #
 #
@@ -23,12 +23,25 @@ Message = dict
 
 
 #
+# TYPES
+#
+
+
+class GPTSettings(MyBaseSettings):
+    gpt_client: Literal["openai", "aoai"]
+
+
+#
 # INITIALIZATION
 #
 
 
-# CLIENT = oai_client
-CLIENT = aoai_client
+settings = GPTSettings()
+
+if settings.gpt_client == "openai":
+    from .oai import client
+elif settings.gpt_client == "aoai":
+    from .aoai import client
 
 
 #
@@ -38,20 +51,19 @@ CLIENT = aoai_client
 
 async def call_gpt(
     messages, *, model: str, tools: list[dict] = [], **kwargs
-) -> tuple[Message, ChatCompletionMessage]:
+) -> tuple[Message, ChatCompletionMessage, ChatCompletion]:
     """Utility function for calling GPT"""
-    # print("Calling GPT ...")
     assert model is not None
 
     if len(tools) > 0:
-        response = await CLIENT.chat.completions.create(
+        response = await client.chat.completions.create(
             model=model,
             messages=messages,
             tools=tools,
             **kwargs,
         )
     else:
-        response = await CLIENT.chat.completions.create(
+        response = await client.chat.completions.create(
             model=model,
             messages=messages,
             **kwargs,
@@ -61,8 +73,7 @@ async def call_gpt(
     # assert message.name is None
     if len(tools) == 0:
         assert message.tool_calls is None
-    # print("... done calling GPT")
-    return message.model_dump(), message
+    return message.model_dump(), message, response
 
 
 #

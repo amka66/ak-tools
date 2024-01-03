@@ -3,7 +3,12 @@ name = "ak-tools"
 version = "0.1.0"
 description = "Utility files and tools (python modules, bash scripts, etc.)"
 authors = ["Amir Kantor <amir.kantor@gmail.com>"]
+license = "Apache-2.0"
 readme = "README.md"
+packages = [
+    { include = "ak_tools" },
+]
+include = ["pyproject.toml"]
 
 [tool.poetry.scripts]
 ak-tools = "ak_tools.main:main"
@@ -18,6 +23,7 @@ nest-asyncio = "^1.5.8"
 typer = {extras = ["all"], version = "^0.9.0"}
 pydantic = "^2.5.3"
 toml = "^0.10.2"
+pydantic-settings = "^2.1.0"
 
 
 [tool.poetry.group.dev.dependencies]

@@ -6,23 +6,36 @@
 #
 
 
-import os
-
-from dotenv import load_dotenv
 from openai import AsyncOpenAI
+from pydantic import SecretStr
+
+from .settings import MyBaseSecrets, MyBaseSettings
 
 #
+#
+# TYPES
+#
+
+
+class OpenAISecrets(MyBaseSecrets):
+    openai_api_key: SecretStr
+
+
+class OpenAISettings(MyBaseSettings):
+    openai_org: str
+
+
 #
 # INITIALIZATION
 #
 
 
-load_dotenv()
-
-_OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-_OPENAI_ORGANIZATION = os.getenv("OPENAI_ORGANIZATION")
+settings = OpenAISettings()
+_secrets = OpenAISecrets()
 
 client = AsyncOpenAI(
-    organization=_OPENAI_ORGANIZATION,
-    api_key=_OPENAI_API_KEY,
+    organization=settings.openai_org,
+    api_key=_secrets.openai_api_key.get_secret_value(),
 )
+
+del _secrets

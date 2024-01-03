@@ -4,29 +4,29 @@ import asyncio
 import nest_asyncio
 
 nest_asyncio.apply()
-
-from util.gpt import call_gpt
-
-# %%
-MODEL_BOT = "gpt4-1106"  # "gpt-3.5-turbo-1106"  # "gpt-4-1106-preview"
+from ak_tools.gpt import call_gpt
+from ak_tools.main import MainSettings
 
 # %%
-_, result = asyncio.run(
+settings = MainSettings()
+
+# %%
+_, message, response = asyncio.run(
     call_gpt(
-        messages = [
+        messages=[
             {
                 "role": "system",
                 "content": "You are a helpful assistant.",
             },
             {
                 "role": "user",
-                "content": "Tell me something funny about is Lean 4 and mathlib.",
+                "content": settings.main_content,
             },
         ],
-        model=MODEL_BOT,
+        model=settings.main_model,
     )
 )
-result
-# %%
-type(result)
+print(message.content)
+print(response.model)
+
 # %%

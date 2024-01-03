@@ -29,6 +29,7 @@ COPY ${PACKAGE_NAME}/*.py ${PACKAGE_NAME}/
 
 COPY pyproject.toml ./
 
-RUN ln -s ${PACKAGE_NAME} src
+RUN ln -s ${PACKAGE_NAME} src  # this will change the package name to src inside docker # TODO
+RUN ln -s /mnt/logs logs
 
 ENTRYPOINT ["/app/.venv/bin/python", "-m", "src"]

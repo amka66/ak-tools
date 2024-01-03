@@ -6,10 +6,10 @@
 #
 
 
-import os
-
-from dotenv import load_dotenv
 from openai import AsyncAzureOpenAI
+from pydantic import HttpUrl, SecretStr
+
+from .settings import MyBaseSecrets, MyBaseSettings
 
 #
 #
@@ -21,18 +21,31 @@ Message = dict
 
 
 #
+# TYPES
+#
+
+
+class AOAISecrets(MyBaseSecrets):
+    aoai_api_key: SecretStr
+
+
+class AOAISettings(MyBaseSettings):
+    aoai_endpoint: HttpUrl
+    aoai_api_version: str
+
+
+#
 # INITIALIZATION
 #
 
 
-load_dotenv()
-
-AOAI_API_KEY = os.getenv("AOAI_API_KEY")
-AOAI_ENDPOINT = os.getenv("AOAI_ENDPOINT")
-AOAI_API_VERSION = os.getenv("AOAI_API_VERSION")
+settings = AOAISettings()
+_secrets = AOAISecrets()
 
 client = AsyncAzureOpenAI(
-    azure_endpoint=AOAI_ENDPOINT,
-    api_key=AOAI_API_KEY,
-    api_version=AOAI_API_VERSION,
+    azure_endpoint=str(settings.aoai_endpoint),
+    api_key=_secrets.aoai_api_key.get_secret_value(),
+    api_version=settings.aoai_api_version,
 )
+
+del _secrets
