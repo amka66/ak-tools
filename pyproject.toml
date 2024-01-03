@@ -1,9 +1,12 @@
 [tool.poetry]
-name = "util"
+name = "ak-tools"
 version = "0.1.0"
-description = "Utility files (python modules, bash scripts, etc.)"
+description = "Utility files and tools (python modules, bash scripts, etc.)"
 authors = ["Amir Kantor <amir.kantor@gmail.com>"]
 readme = "README.md"
+
+[tool.poetry.scripts]
+ak-tools = "ak_tools.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -12,7 +15,13 @@ tiktoken = "^0.5.2"
 python-dotenv = "^1.0.0"
 ipykernel = "^6.27.1"
 nest-asyncio = "^1.5.8"
+typer = {extras = ["all"], version = "^0.9.0"}
+pydantic = "^2.5.3"
+toml = "^0.10.2"
 
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
 
 [build-system]
 requires = ["poetry-core"]

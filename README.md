@@ -1,2 +1,2 @@
-# util
-Utility files (python modules, bash scripts, etc.)
+# ak-tools
+Utility files and tools (python modules, bash scripts, etc.)
