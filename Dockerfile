@@ -12,6 +12,7 @@ ENV POETRY_NO_INTERACTION=1 \
 WORKDIR /app
 
 COPY pyproject.toml poetry.lock ./
+
 RUN touch README.md
 
 RUN poetry install --sync --without dev --no-root && rm -rf $POETRY_CACHE_DIR
@@ -20,13 +21,14 @@ FROM python:${PYTHON_VERSION}-slim-bookworm as runtime
 
 ARG PACKAGE_NAME
 
-ENV VIRTUAL_ENV=/app/.venv \
-    PATH="/app/.venv/bin:$PATH" \
-    PACKAGE_NAME=${PACKAGE_NAME}
+ENV PACKAGE_NAME=${PACKAGE_NAME}
 
-COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+COPY --from=builder /app/.venv /app/.venv
 
-COPY ${PACKAGE_NAME}/*.py ./${PACKAGE_NAME}/
+COPY ${PACKAGE_NAME}/*.py ${PACKAGE_NAME}/
+
 COPY pyproject.toml ./
 
-ENTRYPOINT python -m ${PACKAGE_NAME} "$0" "$@"
+RUN ln -s ${PACKAGE_NAME} src
+
+ENTRYPOINT ["/app/.venv/bin/python", "-m", "src"]
