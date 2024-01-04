@@ -1,3 +1,6 @@
+/ak_tools/**
+!/ak_tools/**/*.py
+
 .DS_Store
 __pycache__/
 .mypy_cache/
@@ -5,7 +8,6 @@ __pycache__/
 .pytest_cache/
 .vscode/
 
-.venv/
 .env
 .secrets
 logs/

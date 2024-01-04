@@ -38,10 +38,10 @@ install: check_venv
 	poetry install $(SYNC)
 
 clean:
-	@echo "Deleting all temporary files..."
+	@echo "Deleting temporary files..."
 	find . -type d -name '__pycache__' -delete || true
 	find . -type d -name '.ipynb_checkpoints' -delete || true
-	find . -name '.pytest_cache' -delete || true  # ok?
+	find . -type d -name '.pytest_cache' -delete || true  # ok?
 	find . -type f -name '.DS_Store' -delete || true
 
 status: check_venv
@@ -71,11 +71,11 @@ shell: check_venv
 
 runl: check_venv
 	@echo "Running locally..."
-	poetry run python -m $(PACKAGE_NAME) $(ARGS)
+	poetry run $(PROJECT_NAME) $(ARGS)
 
 build:
 	@echo "Building docker image..."
-	docker build --build-arg PYTHON_VERSION=$(PYTHON_VERSION) --build-arg PACKAGE_NAME=$(PACKAGE_NAME) -t $(PROJECT_NAME):$(PROJECT_VERSION) --target=runtime .
+	docker build --build-arg PYTHON_VERSION=$(PYTHON_VERSION) --build-arg PACKAGE_NAME=$(PACKAGE_NAME) --build-arg PROJECT_NAME=$(PROJECT_NAME) -t $(PROJECT_NAME):$(PROJECT_VERSION) --target=runtime .
 
 rund:
 	@echo "Running docker image..."
