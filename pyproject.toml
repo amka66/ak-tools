@@ -12,7 +12,6 @@ include = ["pyproject.toml"]
 
 [tool.poetry.scripts]
 ak-tools = "ak_tools.main:main"
-thisapp = "ak_tools.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
