@@ -12,6 +12,7 @@ include = ["pyproject.toml"]
 
 [tool.poetry.scripts]
 ak-tools = "ak_tools.main:main"
+thisapp = "ak_tools.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -24,6 +25,7 @@ typer = {extras = ["all"], version = "^0.9.0"}
 pydantic = "^2.5.3"
 toml = "^0.10.2"
 pydantic-settings = "^2.1.0"
+platformdirs = "^4.1.0"
 
 
 [tool.poetry.group.dev.dependencies]

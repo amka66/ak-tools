@@ -6,23 +6,11 @@
 #
 
 
-from .settings import GeneralSettings
-
-#
-#
-# TYPES
-#
-
-
-class InitSettings(GeneralSettings):
-    pass
-
+from .config import info
 
 #
 # INITIALIZATION
 #
 
 
-settings = InitSettings()
-
-__version__ = settings.version
+__version__ = info.version

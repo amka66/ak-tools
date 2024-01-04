@@ -7,6 +7,7 @@
 
 
 import logging
+import os
 import random
 import string
 import sys
@@ -15,7 +16,7 @@ from enum import Enum
 from pathlib import Path
 from typing import Any
 
-from .settings import LoggingLevel
+from .config import LoggingLevel
 
 #
 #
@@ -89,9 +90,11 @@ def print_(s: str, **kwargs: Any) -> None:
 def create_logger(
     name: str, *, log_file: str | Path, formatter_str: str, level: LoggingLevel
 ) -> logging.Logger:
+    log_file = Path(log_file)
     formatter = logging.Formatter(formatter_str)
     formatter.converter = time.gmtime
     logger = logging.getLogger(name)
+    os.makedirs(log_file.parent, exist_ok=True)
     file_log_handler = logging.FileHandler(
         log_file,
         mode="a",

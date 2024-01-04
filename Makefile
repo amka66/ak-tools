@@ -79,7 +79,7 @@ build:
 
 rund:
 	@echo "Running docker image..."
-	docker run -it --env-file .secrets --env-file .env -v $$(realpath ./logs):/mnt/logs $(PROJECT_NAME):$(PROJECT_VERSION) $(ARGS)
+	docker run -it --env-file .secrets --env-file .env -v $$(realpath ./logs):/app/logs $(PROJECT_NAME):$(PROJECT_VERSION) $(ARGS)
 
 brun: build rund
 

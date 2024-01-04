@@ -11,7 +11,7 @@ from typing import Literal
 
 from openai.types.chat import ChatCompletion, ChatCompletionMessage
 
-from .settings import MyBaseSettings
+from .config import MyBaseSettings
 
 #
 #
@@ -23,7 +23,7 @@ Message = dict
 
 
 #
-# TYPES
+# CONFIGURATION
 #
 
 
@@ -31,12 +31,13 @@ class GPTSettings(MyBaseSettings):
     gpt_client: Literal["openai", "aoai"]
 
 
+settings = GPTSettings()
+
+
 #
 # INITIALIZATION
 #
 
-
-settings = GPTSettings()
 
 if settings.gpt_client == "openai":
     from .oai import client

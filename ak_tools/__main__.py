@@ -6,6 +6,8 @@
 #
 
 
+import sys
+
 from .main import main
 
 #
@@ -14,4 +16,4 @@ from .main import main
 #
 
 
-main()
+sys.exit(main())

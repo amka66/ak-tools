@@ -11,7 +11,7 @@ ENV POETRY_NO_INTERACTION=1 \
 
 WORKDIR /app
 
-COPY pyproject.toml poetry.lock ./
+COPY pyproject.toml poetry.lock .dev ./
 
 RUN touch README.md
 
@@ -29,7 +29,4 @@ COPY ${PACKAGE_NAME}/*.py ${PACKAGE_NAME}/
 
 COPY pyproject.toml ./
 
-RUN ln -s ${PACKAGE_NAME} src  # this will change the package name to src inside docker # TODO
-RUN ln -s /mnt/logs logs
-
-ENTRYPOINT ["/app/.venv/bin/python", "-m", "src"]
+ENTRYPOINT ["/app/.venv/bin/thisapp"]

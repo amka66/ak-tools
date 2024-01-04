@@ -9,11 +9,11 @@
 from openai import AsyncOpenAI
 from pydantic import SecretStr
 
-from .settings import MyBaseSecrets, MyBaseSettings
+from .config import MyBaseSecrets, MyBaseSettings
 
 #
 #
-# TYPES
+# CONFIGURATION
 #
 
 
@@ -25,13 +25,15 @@ class OpenAISettings(MyBaseSettings):
     openai_org: str
 
 
+settings = OpenAISettings()
+
+_secrets = OpenAISecrets()
+
+
 #
 # INITIALIZATION
 #
 
-
-settings = OpenAISettings()
-_secrets = OpenAISecrets()
 
 client = AsyncOpenAI(
     organization=settings.openai_org,

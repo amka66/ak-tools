@@ -12,13 +12,13 @@ import sys
 import typer
 from rich import print
 
+from .config import GeneralSettings, info
 from .gpt import call_gpt
-from .settings import GeneralSettings
 from .utils import LOGGING_FORMATTER_STR, create_logger
 
 #
 #
-# TYPES
+# CONFIGURATION
 #
 
 
@@ -27,18 +27,19 @@ class MainSettings(GeneralSettings):
     main_content: str
 
 
+settings = MainSettings()
+
+
 #
 # INITIALIZATION
 #
 
 
-settings = MainSettings()
-
 app = typer.Typer()
 
 logger = create_logger(
     __name__,
-    log_file=settings.root_dir / "logs" / f"{settings.package_name}.log",
+    log_file=info.log_dir / f"{__name__}.log",
     formatter_str=LOGGING_FORMATTER_STR,
     level=settings.logging_level,
 )
@@ -51,7 +52,7 @@ logger = create_logger(
 
 async def do_command() -> None:
     print("system", sys.version)
-    print("package", settings.version)
+    print("package", info.version)
     print(settings.main_content)
     messages = [
         {
@@ -68,7 +69,7 @@ async def do_command() -> None:
     logger.info(
         "system %s - package %s - model %s",
         sys.version,
-        settings.version,
+        info.version,
         response.model,
     )
 
@@ -95,4 +96,4 @@ def command2() -> None:
 
 
 def main() -> None:
-    app(prog_name=settings.project_name)
+    app(prog_name=info.project_name)

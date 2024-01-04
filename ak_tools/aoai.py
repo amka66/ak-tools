@@ -9,19 +9,11 @@
 from openai import AsyncAzureOpenAI
 from pydantic import HttpUrl, SecretStr
 
-from .settings import MyBaseSecrets, MyBaseSettings
+from .config import MyBaseSecrets, MyBaseSettings
 
 #
 #
-# TYPE HINTS
-#
-
-
-Message = dict
-
-
-#
-# TYPES
+# CONFIGURATION
 #
 
 
@@ -34,13 +26,15 @@ class AOAISettings(MyBaseSettings):
     aoai_api_version: str
 
 
+settings = AOAISettings()
+
+_secrets = AOAISecrets()
+
+
 #
 # INITIALIZATION
 #
 
-
-settings = AOAISettings()
-_secrets = AOAISecrets()
 
 client = AsyncAzureOpenAI(
     azure_endpoint=str(settings.aoai_endpoint),
