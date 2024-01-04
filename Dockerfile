@@ -29,4 +29,6 @@ COPY ${PACKAGE_NAME}/*.py ${PACKAGE_NAME}/
 
 COPY pyproject.toml ./
 
+RUN ln -s /mnt/logs logs
+
 ENTRYPOINT ["/app/.venv/bin/thisapp"]
