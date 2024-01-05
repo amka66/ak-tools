@@ -10,7 +10,5 @@ dist/
 
 logs/
 
-.vscode/
-
 .env
 .secrets
