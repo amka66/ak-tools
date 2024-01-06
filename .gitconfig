@@ -1,0 +1,6 @@
+# Add the following configurations to .git/config in order for it to use this file
+# [include]
+# 	path = ../.gitconfig
+
+[core]
+	symlinks = true

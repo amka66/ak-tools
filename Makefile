@@ -32,6 +32,8 @@ PROJECT_NAME = $(shell poetry version | cut -d' ' -f1)
 PACKAGE_NAME = $(shell poetry version | cut -d' ' -f1 | tr '-' '_')
 PROJECT_VERSION = $(shell poetry version | cut -d' ' -f2)
 PYTHON_VERSION = $(shell cat .python-version)
+rightparenthesis := )
+POETRY_VERSION = $(shell poetry --version | cut -d' ' -f3 | cut -d'$(rightparenthesis)' -f1)
 
 pull:
 	@echo "Pulling file changes..."
@@ -112,11 +114,18 @@ rerunl: recent runl
 
 build:
 	@echo "Building docker image..."
-	docker build --build-arg PYTHON_VERSION=$(PYTHON_VERSION) --build-arg PACKAGE_NAME=$(PACKAGE_NAME) --build-arg PROJECT_NAME=$(PROJECT_NAME) -t $(PROJECT_NAME):$(PROJECT_VERSION) --target=runtime .
+	docker build --build-arg PYTHON_VERSION=$(PYTHON_VERSION) \
+				 --build-arg PACKAGE_NAME=$(PACKAGE_NAME) \
+				 --build-arg PROJECT_NAME=$(PROJECT_NAME) \
+				 --build-arg POETRY_VERSION=$(POETRY_VERSION) \
+				 -t $(PROJECT_NAME):$(PROJECT_VERSION) --target=runtime .
 
 rund:
 	@echo "Running docker image (args=$(ARGS))..."
-	docker run -it --env-file .secrets --env-file .env -v $$(realpath ./logs):/app/logs $(PROJECT_NAME):$(PROJECT_VERSION) $(ARGS)
+	docker run -it --env-file .secrets \
+				   --env-file .env \
+				   -v $$(realpath ./logs):/app/logs \
+				   $(PROJECT_NAME):$(PROJECT_VERSION) $(ARGS)
 
 brun: build rund
 

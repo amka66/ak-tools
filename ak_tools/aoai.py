@@ -19,16 +19,11 @@ from .config import MyBaseSecrets, MyBaseSettings
 
 class AOAISecrets(MyBaseSecrets):
     aoai_api_key: SecretStr
+    aoai_endpoint: HttpUrl
 
 
 class AOAISettings(MyBaseSettings):
-    aoai_endpoint: HttpUrl
     aoai_api_version: str
-
-
-settings = AOAISettings()
-
-_secrets = AOAISecrets()
 
 
 #
@@ -36,8 +31,12 @@ _secrets = AOAISecrets()
 #
 
 
+settings = AOAISettings()
+
+_secrets = AOAISecrets()
+
 client = AsyncAzureOpenAI(
-    azure_endpoint=str(settings.aoai_endpoint),
+    azure_endpoint=str(_secrets.aoai_endpoint),
     api_key=_secrets.aoai_api_key.get_secret_value(),
     api_version=settings.aoai_api_version,
 )

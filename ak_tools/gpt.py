@@ -31,13 +31,12 @@ class GPTSettings(MyBaseSettings):
     gpt_client: Literal["openai", "aoai"]
 
 
-settings = GPTSettings()
-
-
 #
 # INITIALIZATION
 #
 
+
+settings = GPTSettings()
 
 if settings.gpt_client == "openai":
     from .oai import client

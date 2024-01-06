@@ -27,13 +27,12 @@ class MainSettings(GeneralSettings):
     main_content: str
 
 
-settings = MainSettings()
-
-
 #
 # INITIALIZATION
 #
 
+
+settings = MainSettings()
 
 app = typer.Typer()
 

@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "ak-tools"
 version = "0.1.0"
-description = "Utility files and tools (python modules, bash scripts, etc.)"
+description = "A python project template and toolbox, system-wide dotfiles, and opinionated setup guides."
 authors = ["Amir Kantor <amir.kantor@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.md"

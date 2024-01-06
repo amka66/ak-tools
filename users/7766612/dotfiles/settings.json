@@ -1,0 +1,112 @@
+{
+    "workbench.colorTheme": "Default High Contrast",
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#a76a00",
+    },
+    "explorer.confirmDelete": false,
+    "jupyter.askForKernelRestart": false,
+
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,                                            // <-- true, {false}
+        "editor.formatOnSaveMode": "file",                                      // {file}, modifications, modificationsIfAvailable
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit",                               // <-- explicit, always, never
+            "source.unusedImports": "explicit",                                 // <-- explicit, always, never
+            "source.convertImportFormat": "never",                              // <-- explicit, always, never
+        },
+    },
+
+    // "python.defaultInterpreterPath": "${workspaceFolder}/.venv",                // default: python
+    // "python.venvFolders": [  // only per user?                                  // default: []
+    //     "${workspaceFolder}",
+    // ],
+    "python.interpreter.infoVisibility": "always",  // only per user?
+
+    "python.languageServer": "Pylance",                                         // Pylance, None, {Default}
+    "python.analysis.typeCheckingMode": "strict",                               // <-- strict, basic, {off}
+    "python.analysis.autoImportCompletions": true,                              // <-- true, {false}
+    "python.analysis.importFormat":	"relative",                                 // relative, {absolute}
+    "python.testing.unittestEnabled": true,                                     // <-- true, {false}
+    "python.testing.pytestEnabled": true,                                       // <-- true, {false}
+
+    // "pylint.enabled": true,  // enable / disable extension instead
+    "pylint.ignorePatterns": [                                                  // <-- default: []
+    ],
+    "pylint.lintOnChange": true,  // only per user?                             // true, {false}
+    "pylint.importStrategy": "useBundled",                                      // {useBundled}, fromEnvironment
+
+    // "mypy-type-checker.enabled": true,  // enable / disable extension instead
+    "mypy-type-checker.ignorePatterns": [                                       // <-- default: []
+    ],
+    "mypy-type-checker.importStrategy": "useBundled",                           // {useBundled}, fromEnvironment
+    "mypy-type-checker.args": [
+        "--check-untyped-defs",
+    ],
+
+    // "black-formatter.enabled": true,  // enable / disable extension instead
+    "black-formatter.importStrategy": "useBundled",                             // {useBundled}, fromEnvironment
+
+    // "isort.enabled": true,  // enable / disable extension instead
+    "isort.importStrategy": "useBundled",                                       // {useBundled}, fromEnvironment
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+
+    "cSpell.enabled": true,                                                     // <-- {true}, false
+    "cSpell.enabledLanguageIds": [                                              // <--
+        "plaintext",
+        "markdown",
+        "tex",
+        "latex",
+        "bibtex",
+        "restructuredtext",
+        "yaml",
+        "json",
+        "jsonl",
+        "jsonc",
+        "toml",
+        "ini",
+        "html",
+        "xml",
+        "csv",
+        "tsv",
+        "excel",
+        "makefile",
+        "dockerfile",
+        "dockercompose",
+        "shellscript",
+        "powershell",
+        "bat",
+        "python",
+        "prolog",
+        "lean",
+        "lean4",
+        "properties",
+        "snippets",
+        "code-referencing",
+        "diff",
+        "git-commit",
+        "git-rebase",
+        "ignore",
+        "less",
+        "log",
+        "pip-requirements",
+        "raw",
+        "search-result",
+    ],
+    "cSpell.ignorePaths": [                                                     // <--
+    ],
+    "cSpell.language": "en",
+    "cSpell.ignoreWords": [
+    ],
+    "cSpell.words": [
+    ],
+    "cSpell.userWords": [  // only per user?
+    ],
+
+    "git.openRepositoryInParentFolders": "always",
+
+    "vim.smartRelativeLine": true,
+}

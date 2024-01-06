@@ -1,0 +1,8 @@
+{
+    "workbench.colorTheme": "Default High Contrast",
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#a7009f",
+    },
+    "explorer.confirmDelete": false,
+    "jupyter.askForKernelRestart": false,
+}

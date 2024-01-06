@@ -4,7 +4,9 @@ FROM python:${PYTHON_VERSION}-bookworm as builder
 
 ARG PACKAGE_NAME
 
-RUN pip install poetry==1.7.0
+ARG POETRY_VERSION
+
+RUN pip install poetry==${POETRY_VERSION}
 
 ENV POETRY_NO_INTERACTION=1 \
     POETRY_VIRTUALENVS_IN_PROJECT=1 \
@@ -35,7 +37,9 @@ COPY --from=builder /app/.venv .venv
 
 COPY ${PACKAGE_NAME} ${PACKAGE_NAME}
 
-COPY pyproject.toml .dev ./
+COPY pyproject.toml ./
+
+RUN touch .dev
 
 RUN ln -s .venv/bin/${PROJECT_NAME} run
 

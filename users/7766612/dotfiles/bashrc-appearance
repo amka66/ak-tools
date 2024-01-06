@@ -1,0 +1,19 @@
+# # Format shell appearance #
+
+# Prompt
+VIRTUAL_ENV_DISABLE_PROMPT=1
+. ~/l/config/git-prompt.sh
+PS1='\[\033[0;30;47m\]\u@\[\033[0;31;47m\]\h\[\033[0;30;47m\]:\[\033[1;30;47m\]\w\[\033[0;30;47m\] [$(__git_ps1 "%s")] (${VIRTUAL_ENV}) \!\[\033[m\]\n\$ '  # prompt
+# PS1='\[\033[0;30;47m\]\u@\[\033[0;31;47m\]\h\[\033[0;30;47m\]:\[\033[1;30;47m\]\w\[\033[0;30;47m\] [$(__git_ps1 "%s")] (${CONDA_DEFAULT_ENV}) \!\[\033[m\]\n\$ '  # prompt
+
+# Commands ls and tree
+CLICOLOR=1
+LSCOLORS=ExFxBxDxCxegedabagacad
+LS_COLORS="di=34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
+
+# append to command ~/.bash_history (don't truncate file)
+shopt -s histappend
+# don't put duplicate lines or lines starting with space in the history
+HISTCONTROL=ignoredups
+# sync command history using ~/.bash_history after each command
+PROMPT_COMMAND="history -a; history -n"
