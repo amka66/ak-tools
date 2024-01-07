@@ -1,29 +1,35 @@
 # ak-tools
 
-The repository includes a **python project template** and **toolbox**, system-wide **dotfiles**, and opinionated **setup guides**. Each can be borrowed and used independently.
+The repository includes an integrated **Python / Lean4 project template** and **toolbox**, system-wide **dotfiles**, and opinionated **setup guides**. Each can be borrowed and used independently.
 
-- Project template:
+- Integrated project template:
 
-    + Python project template and configuration files
+    + Python project and configuration files
 
         - Including poetry, docker, make, git, dvc, dotenv files, secrets
 
-    <!-- + To be extended to include *Lean4* project template and configuration files -->
+    + Lean4 project and configuration files (extending the python project and vice versa)
+
+        - Including a mathlib4 dependency
 
     + Jupyter notebooks and Markdown documents
 
-    + The project template is set up to include *personal user spaces*
+    + The project is set up to allow *personal user spaces*
 
 - Toolbox:
 
-    + Python tools (still a few)
+    + Python tools (only a few; TBA)
 
-    <!-- + To be extended to include *Lean4* tools -->
+    + Lean4 tools (TBA)
 
 - System-wide dotfiles in folder `users/7766612/dotfiles/`:
 
     + Including bash, tmux, vim, vscode
 
-- Setup guide (see `docs/setting-up-python.md`) on setting up a python development environment:
+- Setup guides:
 
-    + Including pyenv (easily installing multiple / new python versions), poetry (a modern dependency manager, virtual environment, and project builder in one), cookiecutter (sharable project templates), podman docker engine (a free replacement to docker desktop)
+    + A guide on setting up a python development environment in `docs/setting-up-python.md`:
+
+        - Including pyenv (easily installing multiple / new python versions), poetry (a modern dependency manager, virtual environment, and project builder in one), cookiecutter (sharable project templates), podman docker engine (a free replacement to docker desktop)
+
+    + A short guide on setting up a lean4 development environment with mathlib4 dependency in `docs/setting-up-lean4.md`.

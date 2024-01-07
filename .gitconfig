@@ -1,4 +1,4 @@
-# Add the following configurations to .git/config in order for it to use this file
+# Add the following to .git/config in order for it to use .gitconfig:
 # [include]
 # 	path = ../.gitconfig
 
