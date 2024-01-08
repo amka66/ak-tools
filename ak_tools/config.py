@@ -11,11 +11,12 @@ from abc import ABC
 from pathlib import Path
 from typing import Literal
 
-import toml
 from platformdirs import user_config_dir, user_log_dir
 from pydantic import BaseModel, ConfigDict, DirectoryPath
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from rich import print
+
+from .read import read_toml
 
 #
 # TYPE HINTS
@@ -32,7 +33,7 @@ LoggingLevel = Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 
 
 _ROOT_DIR = Path(__file__).parent.parent
-_pyproject = toml.load(_ROOT_DIR / "pyproject.toml")
+_pyproject = read_toml(_ROOT_DIR / "pyproject.toml")
 _PROJECT_NAME: str = _pyproject["tool"]["poetry"]["name"]
 _PACKAGE_NAME = _PROJECT_NAME.replace("-", "_")
 _VERSION = _pyproject["tool"]["poetry"]["version"]
