@@ -13,8 +13,9 @@ import string
 import sys
 import time
 from enum import Enum
+from itertools import zip_longest
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 from .config import LoggingLevel
 
@@ -115,3 +116,15 @@ def get_random_string(length: int0) -> str:
     letters = string.ascii_letters + string.digits
     result_str = "".join(random.choice(letters) for _ in range(length))
     return result_str
+
+
+def compare_iterables(iterable1: Iterable[Any], iterable2: Iterable[Any]) -> bool:
+    """
+    Compares pairs of elements of two iterables iteratively to avoid loading
+    all elements at once
+    """
+    sentinel = object()
+    return all(
+        (a == b and a is not sentinel and b is not sentinel)
+        for a, b in zip_longest(iterable1, iterable2, fillvalue=sentinel)
+    )
