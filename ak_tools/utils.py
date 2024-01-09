@@ -15,7 +15,7 @@ import time
 from enum import Enum
 from itertools import zip_longest
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, Union
 
 from .config import LoggingLevel
 
@@ -89,7 +89,11 @@ def print_(s: str, **kwargs: Any) -> None:
 
 
 def create_logger(
-    name: str, *, log_file: str | Path, formatter_str: str, level: LoggingLevel
+    name: str,
+    *,
+    log_file: Union[str, Path],
+    formatter_str: str,
+    level: LoggingLevel  # note union
 ) -> logging.Logger:
     log_file = Path(log_file)
     formatter = logging.Formatter(formatter_str)

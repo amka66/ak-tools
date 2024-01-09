@@ -17,7 +17,6 @@ of this type).
 
 import json
 import pickle
-import tomllib
 from pathlib import Path
 from typing import Any, List
 
@@ -25,6 +24,9 @@ import jsonlines
 import jsonpickle
 import numpy as np
 import pandas as pd
+
+# import tomllib
+import toml
 import yaml
 
 #
@@ -59,8 +61,9 @@ def read_yaml(file: Path, **kwargs: Any) -> Any:
 
 # *.toml
 def read_toml(file: Path, **kwargs: Any) -> dict[str, Any]:
-    with open(file, "rb") as f_d:
-        return tomllib.load(f_d, **kwargs)
+    # with open(file, "rb") as f_d:
+    #     return tomllib.load(f_d, **kwargs)
+    return toml.load(file, **kwargs)
 
 
 # *.jsonl

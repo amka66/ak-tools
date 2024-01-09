@@ -30,3 +30,14 @@ print(message.content)
 print(response.model)
 
 # %%
+
+# %%
+import ak_tools
+from ak_tools.read import read_jsonlines_to_dataframe
+from ak_tools.write import write_dataframe_to_jsonlines
+
+read_jsonlines_to_dataframe
+write_dataframe_to_jsonlines
+
+print(ak_tools.__version__)
+# %%
