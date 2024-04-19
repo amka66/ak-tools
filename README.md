@@ -1,35 +1,47 @@
 # ak-tools
 
-The repository includes an integrated **Python / Lean4 project template** and **toolbox**, system-wide **dotfiles**, and opinionated **setup guides**. Each can be borrowed and used independently.
+## Overview 
 
-- Integrated project template:
+- Firstly, the repository is intended as a *blueprint* (or, template) of a ___Python project___ (package top-level at `ak_tools/`) for a repeatable and easy set up. At the same time, to avoid duplication, it can be used as a blueprint for a ___Lean4 project___ (package top-level at `AkTools/`). These are my favorite modern alternatives for programming and reasoning. Part of the material in the repository root folder is redundant if only used for *one* of Python or Lean4.
 
-    + Python project and configuration files
+- Secondly, the repository contains ___setup guides___ (under `docs/`) for Python and Lean development environments, using a modern, effective, free, and open source toolset.
 
-        - Including poetry, docker, make, git, dvc, dotenv files, secrets
+- Thirdly, the repository includes system-wide ___dotfiles___ (under `users/7766612/dotfiles/`) for Bash-type shells and other popular, free, and open source CLI utilities. These can be referenced (or copied over) for a repeatable and easy set up of the machine.
 
-    + Lean4 project and configuration files (extending the python project and vice versa)
+- Fourth, the repo include (still, a few) common ___tools and utilities___ in Python and Lean4.
 
-        - Including a mathlib4 dependency
+- The repository is set up to allow ___multiple user spaces___ (under `users/`), each with different environment files and secret (authentication) files, while the former are being tracked in Git. The existing user is configured with a symbolic link (`.user`).
 
-    + Jupyter notebooks and Markdown documents
+## List of Contents
 
-    + The project is set up to allow *personal user spaces*
+1. An integrated project blueprint:
 
-- Toolbox:
+    + **Python** project (package top-level at `ak_tools/`) and configuration files
 
-    + Python tools (only a few; TBA)
+        - Including **Poetry**, **Docker**, **Make**, **Git**, **DVC**, environment files, secrets
 
-    + Lean4 tools (TBA)
+    + **Lean4** project (package top-level at `AkTools/`) and configuration files
 
-- System-wide dotfiles in folder `users/7766612/dotfiles/`:
+        - Including a **mathlib4** dependency
 
-    + Including bash, tmux, vim, vscode
+    + **Jupyter** notebooks and **Markdown** documents
 
-- Setup guides:
+    + The project is set up to allow multiple *user spaces* (under `users/`) while the existing user is symlinked with `.user`.
 
-    + A guide on setting up a python development environment in `docs/setting-up-python.md`:
+2. Setup guides:
 
-        - Including pyenv (easily installing multiple / new python versions), poetry (a modern dependency manager, virtual environment, and project builder in one), cookiecutter (sharable project templates), podman docker engine (a free replacement to docker desktop)
+    + A guide on setting up a Python development environment in `docs/setting-up-python.md`:
 
-    + A short guide on setting up a lean4 development environment with mathlib4 dependency in `docs/setting-up-lean4.md`.
+        - Including **pyenv** (maintaining multiple python versions), **Poetry** (a modern dependency manager, virtual environment, and project builder in one), **Cookiecutter** (sharable project templates), **Podman** (a free Docker engine as a replacement for Docker Desktop)
+
+    + A short guide on setting up a Lean4 development environment with mathlib4 dependency in `docs/setting-up-lean4.md`.
+
+3. System-wide dotfiles in folder `users/7766612/dotfiles/`:
+
+    + Including **Bash**, **tmux**, **Vim**, **VS Code**
+
+4. Toolbox:
+
+    + Python tools and utilities (under `ak_tools/`) -- still, a few
+
+    + Lean4 tools and utilities (under `AkTools/`) -- to be added
