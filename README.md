@@ -2,7 +2,7 @@
 
 ## Overview 
 
-- Firstly, the repository is intended as a *blueprint* (or, template) of a ___Python project___ for a repeatable and easy set up (package top-level at `ak_tools/`). At the same time, to avoid duplication, it can be used as a blueprint for a ___Lean4 project___ (package top-level at `AkTools/`). These are my favorite modern alternatives for programming and reasoning. Part of the material in the repository root folder is redundant if only used for *one* of Python or Lean4.
+- Firstly, the repository is intended as a *blueprint* (or, template) of a ___Python project___ for a repeatable and easy set up. At the same time, to avoid duplication, it can be used as a blueprint for a ___Lean4 project___ (package top-levels are at `ak_tools/` and `AkTools/`, respectively). These are my favorite modern alternatives for programming and reasoning. Part of the material in the repository root folder is redundant if only used for *one* of Python or Lean4.
 
 - Secondly, the repository contains ___setup guides___ (under `docs/`) for Python and Lean development environments, using a modern, effective, free and open source toolset.
 
@@ -16,11 +16,11 @@
 
 1. An integrated project blueprint:
 
-    + **Python** project (package top-level at `ak_tools/`) and configuration files
+    + **Python** project and configuration files (package top-level at `ak_tools/`)
 
         - Including **Poetry**, **Docker**, **Make**, **Git**, **DVC**, environment files, secrets
 
-    + **Lean4** project (package top-level at `AkTools/`) and configuration files
+    + **Lean4** project and configuration files (package top-level at `AkTools/`)
 
         - Including a **mathlib4** dependency
 
