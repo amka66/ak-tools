@@ -6,11 +6,11 @@
 #
 
 
-from .config import info
+from .config import GeneralInfo
 
 #
 # INITIALIZATION
 #
 
 
-__version__ = info.version
+__version__ = GeneralInfo().version

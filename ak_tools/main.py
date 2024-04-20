@@ -12,7 +12,7 @@ import sys
 import typer
 from rich import print
 
-from .config import GeneralSettings, info
+from .config import GeneralInfo, GeneralSettings
 from .gpt import call_gpt
 from .utils import LOGGING_FORMATTER_STR, create_logger
 
@@ -31,6 +31,7 @@ class MainSettings(GeneralSettings):
 # INITIALIZATION
 #
 
+info = GeneralInfo()
 
 settings = MainSettings()
 

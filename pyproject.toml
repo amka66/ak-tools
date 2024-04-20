@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "ak-tools"
 version = "0.1.0"
-description = "Integrated Python / Lean4 project template and toolbox, system-wide dotfiles, and opinionated setup guides."
+description = "Blueprint for Python and/or Lean projects (can be used for either) including setup guides, dotfiles, and a set of tools and utilities in Python and Lean."
 authors = ["Amir Kantor <amir.kantor@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.md"

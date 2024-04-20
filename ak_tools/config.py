@@ -77,9 +77,6 @@ class GeneralInfo(MyBaseInfo):
     env_dir: DirectoryPath = _ENV_DIR
 
 
-info = GeneralInfo()
-
-
 #
 # PROJECT SECRETS
 #
@@ -87,7 +84,7 @@ info = GeneralInfo()
 
 class MyBaseSecrets(BaseSettings, ABC):
     model_config = SettingsConfigDict(
-        env_file=info.env_dir / ".secrets",
+        env_file=_ENV_DIR / ".secrets",
         env_file_encoding="utf-8",
         env_prefix=_ENV_PREFIX,
         extra="ignore",
@@ -101,7 +98,7 @@ class MyBaseSecrets(BaseSettings, ABC):
 
 class MyBaseSettings(BaseSettings, ABC):
     model_config = SettingsConfigDict(
-        env_file=info.env_dir / ".env",
+        env_file=_ENV_DIR / ".env",
         env_file_encoding="utf-8",
         env_prefix=_ENV_PREFIX,
         extra="ignore",
@@ -110,6 +107,3 @@ class MyBaseSettings(BaseSettings, ABC):
 
 class GeneralSettings(MyBaseSettings):
     logging_level: LoggingLevel = "WARNING"
-
-
-settings = GeneralSettings()
