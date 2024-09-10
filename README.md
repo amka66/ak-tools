@@ -8,7 +8,7 @@ The reporsitory contains DevOps-type materials for Python and Lean:
 
 1. The reporsitory contains ___setup guides___ for a Python (resp., Lean) development environment (under `docs/`; we value modern and flexible CLI-based tools and strictly adhere to free and open source solutions).
 
-1. The reporsitory includes ___dotfiles___ for [Bash](https://www.gnu.org/software/bash/)-type shells and different free and open source CLI-based utilities (under `users/7766612/dotfiles/`). Dotfiles are system-wide and can be referenced (or copied over) to allow easy setup of new developer machines.
+1. The reporsitory includes ___dotfiles___ for [Bash](https://www.gnu.org/software/bash/)-type shells and different free and open source CLI-based utilities (under `users/7766612/dotfiles/`). Dotfiles can be referenced (or copied over) to allow easy setup of new developer machines.
 
 1. The reporsitory includes (still, a few) common tools and utilities in Python and Lean.
 
