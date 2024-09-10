@@ -2,15 +2,15 @@
 
 ## Overview 
 
-- Firstly, the repository is intended as a ___blueprint___ (or, template) of a [Python](https://www.python.org/) project for a repeatable and easy set up. At the same time, to avoid duplication, it can be used as a blueprint for a [Lean](https://lean-lang.org/) project. These are my favorite modern alternatives for programming and reasoning. Package top-levels are at `ak_tools/` and `AkTools/`, respectively, and part of the material in the repository root is redundant if only used for *one* of Python or Lean.
+1. The repository is intended to serve as a __blueprint__ (or, template) of a [Python](https://www.python.org/) project to allow an easy set up. At the same time, to avoid duplication, it can be used as a blueprint for a [Lean](https://lean-lang.org/) project (these are my preferred languages for programming and math, respectively). To find your way around: Python (resp., Lean) package top-level is `ak_tools/` (resp., `AkTools/`). Note also that part of the material in the repository root folder is redundant if it is used with only *one* of Python or Lean.
 
-- Secondly, the repository contains ___setup guides___ (under `docs/`) for Python and Lean development environments, using a modern, effective, free and open source toolset.
+1. The repository contains ___setup guides___ for a Python (resp., Lean) development environment (under `docs/`; we value modern and flexible CLI-based tools and strictly adhere to free and open source solutions).
 
-- Thirdly, the repository includes system-wide ___dotfiles___ (under `users/7766612/dotfiles/`) for [Bash](https://www.gnu.org/software/bash/)-type shells and other popular, free and open source CLI utilities. These can be referenced (or copied over) for a repeatable and easy set up of the machine.
+1. The repository includes (system-wide) ___dotfiles___ for [Bash](https://www.gnu.org/software/bash/)-type shells and different free and open source CLI-based utilities (under `users/7766612/dotfiles/`). Dotfiles can be referenced (or copied over) to allow easy setup of new developer machines.
 
-- Fourth, the repo include (still, a few) common ___tools and utilities___ in Python and Lean.
+1. The repo includes (still, a few) common tools and utilities in Python and Lean.
 
-- The repository is set up to allow ___multiple user spaces___ (under `users/`), each with different environment files and secret (authentication) files, while the former are being tracked in Git.
+Note that the repository blueprint is set to allow multiple "user spaces" (under `users/`). A user space may include a developer's environment files (to be tracked with Git independently of other developers) and secret files too (e.g., authentication keys; not to be tracked).
 
 ## List of Contents
 
