@@ -125,20 +125,56 @@ Make sure it is selected via:
 pyenv versions
 ```
 
-### 1.3 Install poetry (pip + setuptools replacement)
+### 1.3 Install pipx
+
+[pipx](https://github.com/pypa/pipx) is an application to install and run standalone python *applications* in isolated environments.
+
+Source:
+- [pipx docs](https://pipx.pypa.io/stable/installation/)
+
+On macOS:
+```
+brew update
+brew install pipx
+pipx ensurepath
+```
+
+On Linux (Ubuntu 23.04 and higher):
+```
+sudo apt update
+sudo apt install pipx
+pipx ensurepath
+```
+
+Consider pipx docs for other platforms.
+
+#### 1.3.1 In the future -- update pipx
+
+On macOS:
+```
+brew update
+brew upgrade pipx
+```
+
+On Ubuntu Linux:
+```
+sudo apt update
+sudo apt upgrade pipx
+```
+
+### 1.4 Install poetry (pip + setuptools replacement)
 
 We will now install poetry as a pip replacement. In contrast to pip, it will install poetry isolated from your python environment.
 Make sure `python3` points to the global python version installed with pyenv.
 
 Source:
-[poetry](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
+[poetry docs](https://python-poetry.org/docs/#installation)
 
-On Linux / MacOS:
+On all platforms, the recommended way to install poetry is using [pipx](https://github.com/pypa/pipx):
 ```
-curl -sSL https://install.python-poetry.org | python3 -
-```
+pipx install poetry
 
-Path to `$HOME/.poetry/bin` is automatically added and set in the login startup script.
+```
 
 For Bash completions run:
 ```
@@ -147,13 +183,15 @@ poetry completions bash >> ~/.bash_completion
 
 Restart *login* shell for changes to take effect.
 
-#### 1.3.1 In the future -- update poetry
+#### 1.4.1 In the future -- update poetry
 
 ```
-poetry self update
+pipx upgrade poetry
 ```
 
-### 1.4 Example #1: create a base environment with poetry (optional)
+Note: there's also `poetry self update`, but I believe the pipx upgrade option makes it obsolete.
+
+### 1.5 Example #1: create a base environment with poetry (optional)
 
 Create a default "base" environment, e.g., for python-based utilities:
 ```
@@ -193,7 +231,7 @@ To deactivate run:
 deactivate
 ```
 
-### 1.5 Example #2: create a data science project with poetry and cookiecutter (optional)
+### 1.6 Example #2: create a data science project with poetry and cookiecutter (optional)
 
 Source:
 [How to Structure a Data Science Project for Readability and Transparency](https://towardsdatascience.com/how-to-structure-a-data-science-project-for-readability-and-transparency-360c6716800) by Khuyen Tran.
