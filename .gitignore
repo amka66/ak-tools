@@ -24,3 +24,5 @@ logs/
 # it *can* be committed and tracked in the repo excluding secrets (!) at `users/<the first commit by the user>`
 
 /.lake
+
+/tmp/

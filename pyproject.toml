@@ -33,6 +33,7 @@ jsonlines = "*"
 jsonpickle = "*"
 toml = "*"
 pyyaml = "*"
+matplotlib = "^3.9.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "*"
